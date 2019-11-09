@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="JS" href="psychic.js">
+</head>
+<body>
+    <h1>Guess what letter I'm thinking</h1>
+    <h2>press the letter you believe it is!</h2>
+    <h2>Lost<div id="psy"></div></h2>
+    <h2>Won<div id="human"></div></h2>
+    <h2>Remain Guesses<div id="remainGuess"></div></h2>
+
+
+<script>
+
+var Letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+var psy = 0;
+var human = 1;
+var remainGuess = 4;
+function getRandomInt(max){
+return Math.floor(Math.random() * Math.floor(max));
+}  
+
+function computer(){
+ getRandomInt(26)
+ return Math.floor(Math.random() * Math.floor(26));
+}  
+  
+function azar(){
+   return Letter[computer()]
+}
+
+
+
+var computerChoice = Letter[computer()]
+
+console.log(computerChoice)
+
+
+
+
+document.onkeyup = function(event) {
+  var userChoice = event.key;
+  // make sure the user selects a value a-z
+  var regexp = /[a-z]/gi;
+    if (!regexp.test(userChoice)) {
+      console.log("Please!");
+    }
+    else {
+      console.log(userChoice);
+    }
+    
+  
+
+if (remainGuess<=0){psy++;
+    console.log('You Loose! Try again!');document.getElementById("psy").innerHTML = psy++;
+    var computerChoice = console.log(azar());remainGuess=4; }
+
+        
+if (computerChoice===userChoice){
+    console.log('You won!');
+    document.getElementById("human").innerHTML = human++;
+    var computerChoice = console.log(azar());remainGuess=5;
+}   else {
+     console.log('Try again!');
+     document.getElementById("remainGuess").innerHTML = remainGuess--;}
+}
+
+</script>
+
+</body>
+</html>
